@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "MyLibrary",
+    "slug": "verdant-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#F5F1E8"
+    },
+    "ios": {
+      "supportsTablet": false
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#F5F1E8"
+      }
+    },
+    "web": {
+      "bundler": "metro",
+      "publicPath": "/CrossPlatAPP/"
+    },
+    "plugins": [
+      "expo-web-browser"
+    ]
+  }
+}

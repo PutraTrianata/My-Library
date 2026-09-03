@@ -16,16 +16,16 @@ import {
 import { apiService } from '../services/api';
 
 const COLORS = {
-  background: '#F1F2ED', // Light Sage/Cream
-  primary: '#656D4A',    // Dark Olive Green
-  secondary: '#C2C5AA',  // Sage Green
-  accent: '#414833',     // Deep Moss
-  text: '#1A1A1A',       // Deep Charcoal
-  textLight: '#545454',
-  card: '#FFFFFF',
-  border: '#C2C5AA',
-  danger: '#800000',
-  success: '#2E7D32',
+  background: '#F5F7FB', // Soft blue-white
+  primary: '#252B78',    // PGRI Navy
+  secondary: '#3B5FBF',  // Royal Blue
+  accent: '#F4C542',     // Gold Accent
+  success: '#2E9B62',    // Green
+  text: '#1F2937',       // Dark Charcoal
+  textLight: '#6B7280',  // Gray
+  card: '#FFFFFF',       // White
+  border: '#D9E1F2',     // Soft Blue Border
+  danger: '#D64545',     // Alert Red
 };
 
 const serifFont = Platform.select({
@@ -252,12 +252,12 @@ export default function BorrowListScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: COLORS.background },
+  container: { flex: 1, backgroundColor:'#C9D8F0' },
   header: { flexDirection: 'row', alignItems: 'center', paddingTop: 60, paddingHorizontal: 25, paddingBottom: 20 },
   backBtn: { width: 40, height: 40, justifyContent: 'center' },
   backText: { fontSize: 40, color: COLORS.primary, fontWeight: '300' },
   headerLabel: { fontSize: 10, fontWeight: '800', color: COLORS.primary, letterSpacing: 2 },
-  headerTitle: { fontSize: 24, fontWeight: 'bold', color: COLORS.accent, fontFamily: serifFont },
+  headerTitle: { fontSize: 24, fontWeight: 'bold', color: COLORS.primary, fontFamily: serifFont },
   searchContainer: { paddingHorizontal: 25, marginBottom: 25 },
   searchInput: { paddingVertical: 10, color: COLORS.text, fontSize: 16, fontFamily: serifFont, fontStyle: 'italic' },
   searchBorder: { height: 1, backgroundColor: COLORS.primary, opacity: 0.3 },

@@ -11,21 +11,23 @@ import {
   Animated,
   ScrollView,
   StatusBar,
+  Image,
   Alert,
 } from 'react-native';
 import { useAuth } from '../context/AuthContext';
 import { apiService } from '../services/api';
 
 const COLORS = {
-  background: '#F1F2ED', // Light Sage/Cream
-  primary: '#656D4A',    // Dark Olive Green
-  secondary: '#C2C5AA',  // Sage Green
-  accent: '#414833',     // Deep Moss
-  text: '#1A1A1A',       // Deep Charcoal
-  textLight: '#545454',
-  card: '#FFFFFF',
-  border: '#C2C5AA',
-  error: '#B71C1C',
+  background: '#FFFFFF', // Soft blue-white
+  primary: '#252B78',    // PGRI Navy
+  secondary: '#3B5FBF',  // Royal Blue
+  accent: '#F4C542',     // Gold Accent
+  success: '#2E9B62',    // Green
+  text: '#1F2937',       // Dark Charcoal
+  textLight: '#6B7280',  // Gray
+  card: '#FFFFFF',       // White
+  border: '#D9E1F2',     // Soft Blue Border
+  danger: '#D64545',     // Alert Red
 };
 
 const serifFont = Platform.select({
@@ -99,10 +101,13 @@ export default function LoginScreen({ navigation }) {
         >
           <Animated.View style={[styles.header, { opacity: fadeAnim }]}>
             <View style={styles.logoBox}>
-              <Text style={styles.logoIcon}>🏛️</Text>
+              <Image
+              source={require('../../assets/logo sekolah.png')}
+              style={styles.schoolLogo}
+              resizeMode="contain"
+              />
             </View>
             <Text style={styles.appName}>MyLibrary</Text>
-            <View style={styles.headerDivider} />
             <Text style={styles.tagline}>Sistem Informasi Arsip & Literatur</Text>
           </Animated.View>
 
@@ -191,25 +196,21 @@ const styles = StyleSheet.create({
   },
   logoIcon: { fontSize: 40 },
   appName: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: COLORS.primary,
-    letterSpacing: 4,
-    fontFamily: serifFont,
-  },
-  headerDivider: {
-    height: 1.5,
-    width: 60,
-    backgroundColor: COLORS.secondary,
-    marginVertical: 12,
-  },
+  fontSize: 28,
+  fontWeight: 'bold',
+  color: COLORS.primary,
+  letterSpacing: 4,
+  fontFamily: serifFont,
+  marginBottom: 5,
+},
   tagline: {
-    fontSize: 12,
-    color: COLORS.textLight,
-    letterSpacing: 1,
-    textTransform: 'uppercase',
-    fontWeight: '600',
-  },
+  fontSize: 12,
+  color: COLORS.textLight,
+  letterSpacing: 1,
+  textTransform: 'uppercase',
+  fontWeight: '600',
+  marginTop: 0,
+},
   card: {
     backgroundColor: '#FFFFFF',
     padding: 30,
@@ -282,4 +283,10 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     textTransform: 'uppercase',
   },
+
+schoolLogo: {
+  width: 150,
+  height: 150,
+  marginBottom: 20,
+},
 });

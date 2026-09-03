@@ -16,14 +16,16 @@ import { CameraView, useCameraPermissions } from 'expo-camera';
 import { apiService } from '../services/api';
 
 const COLORS = {
-  background: '#F1F2ED', // Light Sage/Cream
-  primary: '#656D4A',    // Dark Olive Green
-  secondary: '#C2C5AA',  // Sage Green
-  accent: '#414833',     // Deep Moss
-  text: '#1A1A1A',       // Deep Charcoal
-  textLight: '#545454',
+  background: '#F5F7FB',
+  primary: '#252B78',
+  secondary: '#3B5FBF',
+  accent: '#F4C542',
+  success: '#2E9B62',
+  text: '#1F2937',
+  textLight: '#6B7280',
   card: '#FFFFFF',
-  border: '#C2C5AA',
+  border: '#D9E1F2',
+  danger: '#D64545',
 };
 
 const serifFont = Platform.select({

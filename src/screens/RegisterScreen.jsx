@@ -16,15 +16,16 @@ import {
 import { apiService } from '../services/api';
 
 const COLORS = {
-  background: '#F1F2ED', // Light Sage/Cream
-  primary: '#656D4A',    // Dark Olive Green
-  secondary: '#C2C5AA',  // Sage Green
-  accent: '#414833',     // Deep Moss
-  text: '#1A1A1A',       // Deep Charcoal
-  textLight: '#545454',
-  card: '#FFFFFF',
-  border: '#C2C5AA',
-  error: '#B71C1C',
+  background: '#F5F7FB', // Soft blue-white
+  primary: '#252B78',    // PGRI Navy
+  secondary: '#3B5FBF',  // Royal Blue
+  accent: '#F4C542',     // Gold Accent
+  success: '#2E9B62',    // Green
+  text: '#1F2937',       // Dark Charcoal
+  textLight: '#6B7280',  // Gray
+  card: '#FFFFFF',       // White
+  border: '#D9E1F2',     // Soft Blue Border
+  danger: '#D64545',     // Alert Red
 };
 
 const serifFont = Platform.select({

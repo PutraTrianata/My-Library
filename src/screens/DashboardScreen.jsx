@@ -7,22 +7,39 @@ import {
   Animated,
   StatusBar,
   ScrollView,
+  Image,
   Platform,
 } from 'react-native';
 import { useAuth } from '../context/AuthContext';
 import { apiService } from '../services/api';
 
 const COLORS = {
-  background: '#F4F5F0', 
-  primary: '#656D4A',    
-  secondary: '#C2C5AA',  
-  accent: '#414833',     
-  text: '#1A1A1A',       
-  textLight: '#6B705C',
-  card: '#FFFFFF',
-  border: '#DDE0D0',
+  // Background utama tetap baby blue
+  background: '#C9D8F0',
+
+  // Biru utama
+  primary: '#252B78',
+  secondary: '#3B5FBF',
+
+  // Warna card
+  card: '#303A8C',
+  cardDark: '#252B78',
+  cardLight: '#4353A3',
+
+  // Aksen sedikit saja
+  accent: '#F4C542',
+
+  // Text
   white: '#FFFFFF',
-  highlight: '#E9EAD8',
+  text: '#FFFFFF',
+  textLight: '#D9E2F3',
+
+  // Border & hover
+  border: '#7184B8',
+  highlight: '#4353A3',
+
+  success: '#2E9B62',
+  danger: '#D64545',
 };
 
 const serifFont = Platform.select({
@@ -105,10 +122,21 @@ export default function DashboardScreen({ navigation }) {
       <View style={styles.navbar}>
         <View style={styles.navbarContent}>
           <View style={styles.navLeft}>
-            <Text style={styles.navLogo}>
-              MyLibrary <Text style={{fontWeight: '300', color: COLORS.textLight, fontSize: 14}}></Text>
-            </Text>
-          </View>
+  <Image
+    source={require('../../assets/logo sekolah.png')}
+    style={styles.schoolLogo}
+  />
+
+  <View>
+    <Text style={styles.schoolName}>
+      SMP PGRI 2 DRIYOREJO
+    </Text>
+
+    <Text style={styles.navLogo}>
+      MyLibrary
+    </Text>
+  </View>
+</View>
           <View style={styles.navRight}>
             <View style={styles.userInfo}>
               <Text style={styles.navUser}>{user?.name}</Text>
@@ -147,27 +175,34 @@ export default function DashboardScreen({ navigation }) {
             )}
 
             <View style={styles.heroCard}>
-              <View style={styles.heroInfo}>
-                <Text style={styles.heroTag}>IKHTISAR SISTEM</Text>
-                <Text style={styles.heroTitle}>Pusat Kendali Literatur</Text>
-                <Text style={styles.heroSubtitle}>
-                  Kelola sirkulasi, data buku, dan kearsipan dalam satu antarmuka terintegrasi.
-                </Text>
-                <View style={styles.heroActions}>
-                  <TouchableOpacity 
-                    style={styles.primaryBtn}
-                    onPress={() => navigation.navigate('Borrow')}
-                  >
-                    <Text style={styles.primaryBtnText}>MULAI TRANSAKSI</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-              {Platform.OS === 'web' && (
-                <View style={styles.heroVisual}>
-                  <Text style={styles.heroIcon}>📚</Text>
-                </View>
-              )}
-            </View>
+  <View style={styles.heroInfo}>
+    
+    <Text style={styles.heroTag}>
+      IKHTISAR SISTEM
+    </Text>
+
+    <Text style={styles.heroTitle}>
+      Pusat Kendali Literatur
+    </Text>
+
+    <Text style={styles.heroSubtitle}>
+      Kelola sirkulasi, data buku, dan kearsipan dalam satu antarmuka terintegrasi.
+    </Text>
+
+    <View style={styles.heroActions}>
+      <TouchableOpacity
+        style={styles.primaryBtn}
+        onPress={() => navigation.navigate('Borrow')}
+        activeOpacity={0.7}
+      >
+        <Text style={styles.primaryBtnText}>
+          MULAI TRANSAKSI
+        </Text>
+      </TouchableOpacity>
+    </View>
+
+  </View>
+</View>
 
             <View style={styles.sectionHeader}>
               <Text style={styles.sectionTitle}>Layanan Utama</Text>
@@ -240,9 +275,13 @@ export default function DashboardScreen({ navigation }) {
                 <Text style={styles.systemText}>Database: Terhubung</Text>
                 <Text style={styles.systemText}>Versi: 2.1.4 (Web App)</Text>
               </View>
-              <TouchableOpacity style={styles.sideLogout} onPress={logout}>
+              <TouchableOpacity
+              style={styles.sideLogoutButton}
+              onPress={logout}
+              activeOpacity={0.7}
+              >
                 <Text style={styles.sideLogoutText}>KELUAR SISTEM</Text>
-              </TouchableOpacity>
+                </TouchableOpacity>
             </View>
           </View>
 
@@ -281,7 +320,11 @@ const styles = StyleSheet.create({
   navLogo: { fontSize: Platform.OS === 'web' ? 22 : 18, fontWeight: '800', color: COLORS.primary, letterSpacing: 1 },
   navRight: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   userInfo: { alignItems: 'flex-end', marginRight: 5, display: Platform.OS === 'web' ? 'flex' : 'none' },
-  navUser: { fontSize: 14, fontWeight: '700', color: COLORS.accent },
+  navUser: {
+  fontSize: 14,
+  fontWeight: '700',
+  color: COLORS.primary
+},
   navAvatar: { 
     width: 38, 
     height: 38, 
@@ -293,6 +336,26 @@ const styles = StyleSheet.create({
     borderColor: COLORS.accent
   },
   navAvatarText: { color: COLORS.white, fontWeight: 'bold', fontSize: 14 },
+
+  navLeft: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  gap: 12,
+},
+
+schoolLogo: {
+  width: 65,
+  height: 65,
+  resizeMode: 'contain',
+},
+
+schoolName: {
+  fontSize: 12,
+  fontWeight: '800',
+  color: COLORS.primary,
+  letterSpacing: 0.8,
+  marginBottom: 2,
+},
 
   scroll: { 
     flexGrow: 1, 
@@ -314,90 +377,190 @@ const styles = StyleSheet.create({
 
   welcomeSection: { marginBottom: Platform.OS === 'web' ? 35 : 25 },
   greetingText: { fontSize: 11, color: COLORS.primary, fontWeight: '800', letterSpacing: 1.5 },
-  userNameText: { fontSize: Platform.OS === 'web' ? 42 : 32, fontWeight: 'bold', color: COLORS.accent, fontFamily: serifFont, marginTop: 4 },
+ userNameText: {
+  fontSize: Platform.OS === 'web' ? 42 : 32,
+  fontWeight: 'bold',
+  color: COLORS.primary,
+  fontFamily: serifFont,
+  marginTop: 4
+},
   accentLine: { width: 60, height: 4, backgroundColor: COLORS.primary, marginTop: 15 },
 
   mobileStatsCard: {
-    backgroundColor: COLORS.white,
-    padding: 20,
-    borderWidth: 1,
-    borderColor: COLORS.border,
-    marginBottom: 25,
-    borderLeftWidth: 5,
-    borderLeftColor: COLORS.primary,
-  },
+  backgroundColor: COLORS.primary, // NAVY
+  padding: 35,
+  borderWidth: 1,
+  borderColor: COLORS.primary,
+  borderLeftWidth: 8,
+  borderLeftColor: COLORS.accent, // KUNING
+},
 
   heroCard: {
-    backgroundColor: COLORS.white,
-    padding: Platform.OS === 'web' ? 40 : 25,
-    borderWidth: 1,
-    borderColor: COLORS.border,
-    flexDirection: 'row',
-    marginBottom: 35,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.02,
-    shadowRadius: 10,
-    borderLeftWidth: 8,
-    borderLeftColor: COLORS.primary,
-  },
-  heroInfo: { flex: 2 },
-  heroVisual: { flex: 1, alignItems: 'flex-end', justifyContent: 'center' },
-  heroTag: { fontSize: 10, fontWeight: '900', color: COLORS.primary, letterSpacing: 1.5, marginBottom: 15 },
-  heroTitle: { fontSize: Platform.OS === 'web' ? 28 : 20, fontWeight: 'bold', color: COLORS.accent, marginBottom: 10 },
-  heroSubtitle: { fontSize: 14, color: COLORS.textLight, lineHeight: 22, marginBottom: 25 },
-  heroActions: { flexDirection: 'row' },
-  primaryBtn: { backgroundColor: COLORS.primary, paddingVertical: 12, paddingHorizontal: 20, borderRadius: 2 },
-  primaryBtnText: { color: COLORS.white, fontWeight: '800', fontSize: 11, letterSpacing: 1 },
+  backgroundColor: COLORS.primary, // NAVY
+  padding: Platform.OS === 'web' ? 40 : 25,
+
+  borderWidth: 1,
+  borderColor: COLORS.white, // pinggiran putih
+
+  flexDirection: 'row',
+  marginBottom: 35,
+
+  shadowColor: '#000',
+  shadowOffset: { width: 0, height: 4 },
+  shadowOpacity: 0.12,
+  shadowRadius: 10,
+
+  borderLeftWidth: 8,
+  borderLeftColor: COLORS.accent, // aksen kuning
+},
+
+heroInfo: {
+  flex: 2
+},
+
+heroVisual: {
+  flex: 1,
+  alignItems: 'flex-end',
+  justifyContent: 'center'
+},
+
+// IKHTISAR SISTEM
+heroTag: {
+  fontSize: 10,
+  fontWeight: '900',
+  color: COLORS.white, // PUTIH
+  letterSpacing: 1.5,
+  marginBottom: 15
+},
+
+// PUSAT KENDALI LITERATUR
+heroTitle: {
+  fontSize: Platform.OS === 'web' ? 28 : 20,
+  fontWeight: 'bold',
+  color: COLORS.white, // KUNING
+  marginBottom: 10
+},
+
+// KELOLA SIRKULASI...
+heroSubtitle: {
+  fontSize: 14,
+  color: COLORS.white, // PUTIH
+  lineHeight: 22,
+  marginBottom: 25
+},
+
+heroActions: {
+  flexDirection: 'row'
+},
+
+// KOTAK MULAI TRANSAKSI
+primaryBtn: {
+  backgroundColor: COLORS.white, // PUTIH
+  paddingVertical: 12,
+  paddingHorizontal: 20,
+  borderRadius: 2
+},
+
+// TEKS MULAI TRANSAKSI
+primaryBtnText: {
+  color: COLORS.primary, // NAVY
+  fontWeight: '800',
+  fontSize: 11,
+  letterSpacing: 1
+},
   heroIcon: { fontSize: 100, opacity: 0.08 },
 
   sectionHeader: { flexDirection: 'row', alignItems: 'center', marginBottom: 20, gap: 15 },
-  sectionTitle: { fontSize: 12, fontWeight: '900', color: COLORS.accent, letterSpacing: 1.5, textTransform: 'uppercase' },
+  sectionTitle: { fontSize: 12, fontWeight: '900', color: COLORS.primary, letterSpacing: 1.5, textTransform: 'uppercase' },
   titleLine: { flex: 1, height: 1, backgroundColor: COLORS.border },
 
   menuGrid: { 
-    flexDirection: 'row', 
-    flexWrap: 'wrap', 
-    gap: 15 
-  },
-  menuItem: {
-    width: Platform.OS === 'web' ? '48.5%' : '100%',
-    backgroundColor: COLORS.white,
-    padding: 20,
-    borderWidth: 1,
-    borderColor: COLORS.border,
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 15,
-  },
-  menuItemHovered: {
-    borderColor: COLORS.primary,
-    backgroundColor: COLORS.highlight,
-  },
-  menuIconContainer: { width: 50, height: 50, backgroundColor: COLORS.background, justifyContent: 'center', alignItems: 'center', borderRadius: 4 },
-  menuIcon: { fontSize: 22 },
-  menuText: { flex: 1 },
-  menuTitle: { fontSize: 16, fontWeight: 'bold', color: COLORS.accent },
-  menuDesc: { fontSize: 12, color: COLORS.textLight, marginTop: 2 },
+  flexDirection: 'row', 
+  flexWrap: 'wrap', 
+  gap: 15 
+},
+
+menuItem: {
+  width: Platform.OS === 'web' ? '48.5%' : '100%',
+  backgroundColor: COLORS.primary, // NAVY
+  padding: 20,
+  borderWidth: 1,
+  borderColor: COLORS.accent, // KUNING
+  borderLeftWidth: 5,
+  borderLeftColor: COLORS.accent,
+  flexDirection: 'row',
+  alignItems: 'center',
+  gap: 15,
+},
+
+menuItemHovered: {
+  borderColor: COLORS.accent,
+  backgroundColor: COLORS.secondary, // biru lebih terang
+},
+
+menuIconContainer: {
+  width: 50,
+  height: 50,
+  backgroundColor: COLORS.secondary,
+  justifyContent: 'center',
+  alignItems: 'center',
+  borderRadius: 4,
+  borderWidth: 1,
+  borderColor: COLORS.accent,
+},
+
+menuIcon: { 
+  fontSize: 22 
+},
+
+menuText: { 
+  flex: 1 
+},
+
+menuTitle: {
+  fontSize: 16,
+  fontWeight: 'bold',
+  color: COLORS.accent, // KUNING
+},
+
+menuDesc: {
+  fontSize: 12,
+  color: COLORS.white, // PUTIH
+  marginTop: 2,
+},
 
   statsContainer: { gap: 20 },
   statsContainerMobile: { flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', marginTop: 15 },
   statBox: { flex: 1, alignItems: 'flex-start' },
-  statNumber: { fontSize: 32, fontWeight: 'bold', color: COLORS.primary, fontFamily: serifFont },
+  statNumber: {
+  fontSize: 42,
+  fontWeight: 'bold',
+  color: COLORS.white, 
+},
   statNumberMobile: { fontSize: 24, textAlign: 'center', width: '100%' },
-  statLabel: { fontSize: 10, fontWeight: '800', color: COLORS.textLight, letterSpacing: 1, marginTop: 4 },
-  statDivider: { height: 1, backgroundColor: COLORS.border, width: '100%' },
-  statDividerVertical: { width: 1, height: 40, backgroundColor: COLORS.border },
+  statLabel: {
+  fontSize: 12,
+  fontWeight: '800',
+  color: COLORS.accent, // KUNING
+  letterSpacing: 1.5,
+},
+  statDivider: {
+  height: 1.5,
+  backgroundColor: 'rgba(255,255,255,0.55)',
+  marginVertical: 10,
+},
+  statDividerVertical: { width: 1, height: 40, backgroundColor: 'rgba(255,255,255,0.25)',
+  marginVertical: 20, },
 
   sideCard: {
-    backgroundColor: COLORS.white,
+    backgroundColor: COLORS.primary,
     padding: 25,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: COLORS.accent,
     borderLeftWidth: 5,
-    borderLeftColor: COLORS.secondary,
+    borderLeftColor: COLORS.accent,
   },
-  sideCardTitle: { fontSize: 11, fontWeight: '900', color: COLORS.primary, letterSpacing: 1.5, marginBottom: 20, textTransform: 'uppercase' },
+  sideCardTitle: { fontSize: 11, fontWeight: '900', color: COLORS.white, letterSpacing: 1.5, marginBottom: 20, textTransform: 'uppercase' },
   quoteWrapper: { borderLeftWidth: 3, borderLeftColor: COLORS.highlight, paddingLeft: 15 },
   quoteText: { fontSize: 15, color: COLORS.accent, fontStyle: 'italic', lineHeight: 24, fontFamily: serifFont },
   
@@ -405,8 +568,32 @@ const styles = StyleSheet.create({
   statusRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   statusDot: { width: 8, height: 8, borderRadius: 4 },
   systemText: { fontSize: 12, color: COLORS.secondary, fontWeight: '500' },
-  sideLogout: { borderTopWidth: 1, borderTopColor: 'rgba(255,255,255,0.1)', paddingTop: 15 },
-  sideLogoutText: { color: COLORS.white, fontSize: 10, fontWeight: 'bold', letterSpacing: 1 },
+sideLogout: {
+  marginTop: 15,
+  paddingTop: 15,
+  alignItems: 'flex-start',
+},
+
+sideLogoutButton: {
+  backgroundColor: COLORS.primary,
+  paddingVertical: 12,
+  paddingHorizontal: 20,
+  borderRadius: 3,
+  borderWidth: 1,
+  borderColor: COLORS.primary,
+
+  justifyContent: 'center',
+  alignItems: 'center',
+  alignSelf: 'stretch',
+},
+
+sideLogoutText: {
+  color: COLORS.white,
+  fontSize: 10,
+  fontWeight: 'bold',
+  letterSpacing: 1,
+  textAlign: 'center',
+},
 
   mobileLogout: { marginHorizontal: 20, marginTop: 10, padding: 15, alignItems: 'center', borderWidth: 1, borderColor: COLORS.danger },
   mobileLogoutText: { color: COLORS.danger, fontWeight: 'bold', fontSize: 12, letterSpacing: 1 },

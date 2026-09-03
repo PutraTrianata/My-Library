@@ -5,6 +5,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
+    "icon": "./assets/logo sekolah.png",
     "splash": {
       "backgroundColor": "#F5F1E8"
     },
@@ -13,15 +14,23 @@
     },
     "android": {
       "adaptiveIcon": {
+        "foregroundImage": "./assets/logo sekolah.png",
         "backgroundColor": "#F5F1E8"
-      }
+      },
+      "package": "com.putra454.verdantapp"
     },
     "web": {
       "bundler": "metro",
+      "favicon": "./assets/logo sekolah.png",
       "publicPath": "/CrossPlatAPP/"
     },
     "plugins": [
       "expo-web-browser"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "d506c7f0-a04d-42e6-ad12-6522f41de425"
+      }
+    }
   }
 }

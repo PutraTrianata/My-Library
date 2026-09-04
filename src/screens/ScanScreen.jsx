@@ -72,7 +72,7 @@ const WebCameraView = React.forwardRef(({ onScan, onBackPress, onManualInput }, 
       setError('');
       const stream = await navigator.mediaDevices.getUserMedia({ 
         video: { 
-          facingMode: 'user',
+          facingMode: 'environment',
           width: { ideal: 1280 },
           height: { ideal: 720 }
         } 
@@ -262,7 +262,7 @@ const WebCameraView = React.forwardRef(({ onScan, onBackPress, onManualInput }, 
     React.createElement('div', {
       style: {
         position: 'absolute',
-        bottom: 200,
+        bottom: 'calc(50% - 140px)',
         textAlign: 'center',
         color: '#fff',
         fontSize: 16,
@@ -492,13 +492,31 @@ export default function ScanScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: COLORS.primary },
-  overlay: { ...StyleSheet.absoluteFillObject, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(101, 109, 74, 0.4)' },
+  overlay: { ...StyleSheet.absoluteFillObject, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(37, 43, 120, 0.35)'},
   backBtn: { position: 'absolute', top: 50, left: 20, width: 40, height: 40, backgroundColor: 'rgba(0,0,0,0.5)', borderRadius: 20, justifyContent: 'center', alignItems: 'center', zIndex: 10 },
   backBtnText: { color: '#fff', fontSize: 20, fontWeight: 'bold' },
   scanFrame: { width: 280, height: 200, borderWidth: 1.5, borderColor: COLORS.secondary, borderRadius: 2 },
-  scanText: { color: '#fff', marginTop: 24, fontSize: 16, fontWeight: '700', letterSpacing: 1.5, textTransform: 'uppercase' },
-  manualEntryBtn: { marginTop: 40, paddingVertical: 12, paddingHorizontal: 30, borderBottomWidth: 1, borderBottomColor: COLORS.secondary },
-  manualEntryText: { color: COLORS.secondary, fontWeight: 'bold', letterSpacing: 1 },
+  scanText: {
+  color: '#fff',
+  marginTop: 20,
+  fontSize: 16,
+  fontWeight: '700',
+  letterSpacing: 1.5,
+  textTransform: 'uppercase',
+},
+ manualEntryBtn: {
+  marginTop: 35,
+  paddingVertical: 12,
+  paddingHorizontal: 30,
+  borderBottomWidth: 1,
+  borderBottomColor: COLORS.accent,
+},
+
+manualEntryText: {
+  color: COLORS.accent,
+  fontWeight: 'bold',
+  letterSpacing: 1,
+},
   modalOverlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.7)', justifyContent: 'center', padding: 20 },
   modalOverlayCenter: { flex: 1, backgroundColor: 'rgba(0,0,0,0.7)', justifyContent: 'center', alignItems: 'center', padding: 20 },
   manualInputCard: { backgroundColor: COLORS.background, padding: 25, width: Platform.OS === 'web' ? 400 : '100%', borderLeftWidth: 5, borderLeftColor: COLORS.primary },

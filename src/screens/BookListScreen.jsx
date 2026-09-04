@@ -291,7 +291,13 @@ export default function BookListScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#C9D8F0' },
-  header: { flexDirection: 'row', alignItems: 'center', paddingTop: 60, paddingHorizontal: 25, paddingBottom: 20 },
+header: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  paddingTop: Platform.OS === 'android' ? 30 : 40,
+  paddingHorizontal: 25,
+  paddingBottom: 20,
+},
   backBtn: { width: 40, height: 40, justifyContent: 'center' },
   backText: { fontSize: 40, color: COLORS.primary, fontWeight: '300' },
   headerLabel: { fontSize: 10, fontWeight: '800', color: COLORS.primary, letterSpacing: 2 },

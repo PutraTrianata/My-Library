@@ -72,7 +72,7 @@ const WebCameraView = React.forwardRef(({ onScan, onBackPress, onManualInput }, 
       setError('');
       const stream = await navigator.mediaDevices.getUserMedia({ 
         video: { 
-          facingMode: 'user',
+          facingMode: 'environment',
           width: { ideal: 1280 },
           height: { ideal: 720 }
         } 
@@ -199,7 +199,19 @@ const WebCameraView = React.forwardRef(({ onScan, onBackPress, onManualInput }, 
         width: '100%',
         height: '100%',
         objectFit: 'cover',
-      }
+        }
+      }),
+  React.createElement('div', {
+  style: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(37, 43, 120, 0.35)',
+    zIndex: 1,
+    pointerEvents: 'none',
+  }
     }),
     React.createElement('canvas', {
       ref: canvasRef,
@@ -246,7 +258,7 @@ const WebCameraView = React.forwardRef(({ onScan, onBackPress, onManualInput }, 
         height: 200,
         borderWidth: 1.5,
         borderStyle: 'solid',
-        borderColor: '#C2C5AA',
+        borderColor: '#F4C542',
         borderRadius: 2,
         zIndex: 5
       }
@@ -254,7 +266,7 @@ const WebCameraView = React.forwardRef(({ onScan, onBackPress, onManualInput }, 
     React.createElement('div', {
       style: {
         position: 'absolute',
-        bottom: 200,
+        bottom: 'calc(50% - 145px)',
         textAlign: 'center',
         color: '#fff',
         fontSize: 16,
@@ -263,7 +275,7 @@ const WebCameraView = React.forwardRef(({ onScan, onBackPress, onManualInput }, 
         textTransform: 'uppercase',
         zIndex: 5
       }
-    }, 'Pindai Kode Sirkulasi Literatur'),
+    }, 'Pindai Kode Sirkulasi Literatur'), 
     React.createElement('button', {
       onClick: onManualInput,
       style: {
@@ -501,7 +513,7 @@ const styles = StyleSheet.create({
   overlay: { ...StyleSheet.absoluteFillObject, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(101, 109, 74, 0.4)' },
   backBtn: { position: 'absolute', top: 50, left: 20, width: 40, height: 40, backgroundColor: 'rgba(0,0,0,0.5)', borderRadius: 20, justifyContent: 'center', alignItems: 'center', zIndex: 10 },
   backBtnText: { color: '#fff', fontSize: 20, fontWeight: 'bold' },
-  scanFrame: { width: 280, height: 200, borderWidth: 1.5, borderColor: COLORS.secondary, borderRadius: 2 },
+  scanFrame: { width: 280, height: 200, borderWidth: 2, borderColor: COLORS.secondary, borderRadius: 2 },
   scanText: { color: '#fff', marginTop: 24, fontSize: 16, fontWeight: '700', letterSpacing: 1.5, textTransform: 'uppercase' },
   manualEntryBtn: { marginTop: 40, paddingVertical: 12, paddingHorizontal: 30, borderBottomWidth: 1, borderBottomColor: COLORS.secondary },
   manualEntryText: { color: COLORS.secondary, fontWeight: 'bold', letterSpacing: 1 },

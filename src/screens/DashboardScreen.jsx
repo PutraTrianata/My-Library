@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+
 import {
   View,
   Text,
@@ -10,6 +11,9 @@ import {
   Image,
   Platform,
 } from 'react-native';
+
+import { SafeAreaView } from 'react-native-safe-area-context';
+
 import { useAuth } from '../context/AuthContext';
 import { apiService } from '../services/api';
 
@@ -298,7 +302,11 @@ export default function DashboardScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  root: { flex: 1, backgroundColor: COLORS.background },
+  root: {
+  flex: 1,
+  backgroundColor: COLORS.background,
+  paddingTop: Platform.OS === 'android' ? 30 : 0,
+},
   navbar: {
     height: 70,
     backgroundColor: COLORS.white,
@@ -597,4 +605,9 @@ sideLogoutText: {
 
   mobileLogout: { marginHorizontal: 20, marginTop: 10, padding: 15, alignItems: 'center', borderWidth: 1, borderColor: COLORS.danger },
   mobileLogoutText: { color: COLORS.danger, fontWeight: 'bold', fontSize: 12, letterSpacing: 1 },
+
+  safeArea: {
+  flex: 1,
+  backgroundColor: COLORS.white,
+},
 });

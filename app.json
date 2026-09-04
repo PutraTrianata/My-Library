@@ -12,10 +12,16 @@
       "supportsTablet": false
     },
     "android": {
-      "adaptiveIcon": {
-        "backgroundColor": "#F5F1E8"
-      }
-    },
+  "backgroundColor": "#FFFFFF",
+  "adaptiveIcon": {
+    "backgroundColor": "#F5F1E8"
+  }
+},
+"androidStatusBar": {
+  "backgroundColor": "#FFFFFF",
+  "barStyle": "dark-content",
+  "translucent": false
+},
     "web": {
       "bundler": "metro",
       "publicPath": "/CrossPlatAPP/"

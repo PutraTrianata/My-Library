@@ -13,6 +13,7 @@ import {
   StatusBar,
   Alert,
 } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 import { apiService } from '../services/api';
 
 const COLORS = {
@@ -38,6 +39,7 @@ export default function RegisterScreen({ navigation }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
@@ -111,7 +113,7 @@ export default function RegisterScreen({ navigation }) {
             <View style={styles.logoBox}>
               <Text style={styles.logoIcon}>🖋️</Text>
             </View>
-            <Text style={styles.appName}>MyLibrary</Text>
+            <Text style={styles.appName}>SIPADU PGRI 2</Text>
             <View style={styles.headerDivider} />
             <Text style={styles.tagline}>Formulir Registrasi Anggota Baru</Text>
           </Animated.View>
@@ -153,14 +155,25 @@ export default function RegisterScreen({ navigation }) {
             {/* Password */}
             <View style={styles.fieldGroup}>
               <Text style={styles.label}>KATA SANDI</Text>
-              <TextInput
-                style={[styles.input, errors.password && styles.inputError]}
-                placeholder="Minimal 6 karakter"
-                placeholderTextColor="#A0A0A0"
-                value={password}
-                onChangeText={(t) => { setPassword(t); setErrors((e) => ({ ...e, password: null })); }}
-                secureTextEntry
-              />
+              <View style={[styles.passwordInputContainer, errors.password && styles.inputError]}>
+                <TextInput
+                  style={[styles.input, styles.passwordInput]}
+                  placeholder="Minimal 6 karakter"
+                  placeholderTextColor="#A0A0A0"
+                  value={password}
+                  onChangeText={(t) => { setPassword(t); setErrors((e) => ({ ...e, password: null })); }}
+                  secureTextEntry={!showPassword}
+                />
+                <TouchableOpacity
+                  style={styles.passwordVisibilityButton}
+                  onPress={() => setShowPassword((visible) => !visible)}
+                  accessibilityRole="button"
+                  accessibilityLabel={showPassword ? 'Sembunyikan kata sandi' : 'Tampilkan kata sandi'}
+                  hitSlop={8}
+                >
+                  <Feather name={showPassword ? 'eye-off' : 'eye'} size={20} color={COLORS.textLight} />
+                </TouchableOpacity>
+              </View>
               {errors.password ? <Text style={styles.errorText}>{errors.password}</Text> : null}
             </View>
 
@@ -278,6 +291,15 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: COLORS.text,
   },
+  passwordInputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#F9F9F9',
+    borderWidth: 1,
+    borderColor: COLORS.border,
+  },
+  passwordInput: { flex: 1, borderWidth: 0 },
+  passwordVisibilityButton: { paddingHorizontal: 15, paddingVertical: 12 },
   inputError: { borderColor: COLORS.error },
   errorText: { fontSize: 11, color: COLORS.error, marginTop: 6, fontStyle: 'italic' },
   button: {

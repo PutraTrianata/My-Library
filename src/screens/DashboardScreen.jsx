@@ -137,7 +137,7 @@ export default function DashboardScreen({ navigation }) {
     </Text>
 
     <Text style={styles.navLogo}>
-      MyLibrary
+      SIPADU PGRI 2
     </Text>
   </View>
 </View>

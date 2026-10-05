@@ -1,10 +1,11 @@
 {
   "expo": {
-    "name": "MyLibrary",
+    "name": "SIPADU PGRI 2",
     "slug": "verdant-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
+    "icon": "./assets/app-icon.png",
     "splash": {
       "backgroundColor": "#F5F1E8"
     },
@@ -14,7 +15,8 @@
     "android": {
       "backgroundColor": "#FFFFFF",
       "adaptiveIcon": {
-        "backgroundColor": "#F5F1E8"
+        "foregroundImage": "./assets/app-icon-foreground.png",
+        "backgroundColor": "#FFFFFF"
       },
       "package": "com.nazwazahira14.mylibrary"
     },

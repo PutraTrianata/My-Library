@@ -429,9 +429,15 @@ export default function ScanScreen({ navigation }) {
       )}
 
       <Modal visible={modalVisible} transparent animationType="fade">
-        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.modalOverlay}>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+          style={styles.modalOverlay}
+        >
           <View style={styles.modalContent}>
-            <ScrollView showsVerticalScrollIndicator={false}>
+            <ScrollView
+              showsVerticalScrollIndicator={false}
+              keyboardShouldPersistTaps="handled"
+            >
               <Text style={styles.modalTitle}>Registrasi Literatur Baru</Text>
               <View style={styles.divider} />
               <Text style={styles.modalSubtitle}>ID Katalog: {scannedBarcode}</Text>

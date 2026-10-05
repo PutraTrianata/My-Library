@@ -179,7 +179,7 @@ export default function LoginScreen({ navigation }) {
           </Animated.View>
 
           <View style={styles.footer}>
-            <Text style={styles.footerText}>Unit Perpustakaan Digital © 2024</Text>
+            <Text style={styles.footerText}>Unit Perpustakaan Digital © 2026</Text>
           </View>
         </ScrollView>
       </KeyboardAvoidingView>

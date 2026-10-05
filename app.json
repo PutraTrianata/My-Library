@@ -6,9 +6,6 @@
     "orientation": "portrait",
     "userInterfaceStyle": "light",
     "icon": "./assets/app-icon.png",
-    "splash": {
-      "backgroundColor": "#F5F1E8"
-    },
     "ios": {
       "supportsTablet": false
     },
@@ -30,11 +27,24 @@
       "publicPath": "/CrossPlatAPP/"
     },
     "plugins": [
-      "expo-web-browser"
+      "expo-web-browser",
+      [
+        "expo-splash-screen",
+        {
+          "ios": {
+            "backgroundColor": "#F5F1E8"
+          },
+          "android": {
+            "image": "./assets/app-icon.png",
+            "imageWidth": 200,
+            "backgroundColor": "#FFFFFF"
+          }
+        }
+      ]
     ],
     "extra": {
       "eas": {
-        "projectId": "5fba8c45-8330-404f-a6fa-997378063b4b"
+        "projectId": "d506c7f0-a04d-42e6-ad12-6522f41de425"
       }
     }
   }

@@ -12,22 +12,28 @@
       "supportsTablet": false
     },
     "android": {
-  "backgroundColor": "#FFFFFF",
-  "adaptiveIcon": {
-    "backgroundColor": "#F5F1E8"
-  }
-},
-"androidStatusBar": {
-  "backgroundColor": "#FFFFFF",
-  "barStyle": "dark-content",
-  "translucent": false
-},
+      "backgroundColor": "#FFFFFF",
+      "adaptiveIcon": {
+        "backgroundColor": "#F5F1E8"
+      },
+      "package": "com.nazwazahira14.mylibrary"
+    },
+    "androidStatusBar": {
+      "backgroundColor": "#FFFFFF",
+      "barStyle": "dark-content",
+      "translucent": false
+    },
     "web": {
       "bundler": "metro",
       "publicPath": "/CrossPlatAPP/"
     },
     "plugins": [
       "expo-web-browser"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "5fba8c45-8330-404f-a6fa-997378063b4b"
+      }
+    }
   }
 }

@@ -18,11 +18,12 @@
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
     "@supabase/supabase-js": "^2.108.2",
-    "expo": "~54.0.0",
+    "expo": "~54.0.37",
     "expo-auth-session": "~7.0.11",
     "expo-camera": "~17.0.10",
     "expo-crypto": "~15.0.9",
     "expo-image-picker": "~17.0.11",
+    "expo-splash-screen": "~31.0.13",
     "expo-status-bar": "~3.0.9",
     "expo-web-browser": "~15.0.11",
     "react": "19.1.0",
@@ -34,7 +35,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.24.0",
-    "babel-preset-expo": "~54.0.0",
+    "babel-preset-expo": "~54.0.10",
     "gh-pages": "^6.3.0"
   },
   "private": true

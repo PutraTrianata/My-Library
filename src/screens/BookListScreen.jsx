@@ -294,7 +294,7 @@ const styles = StyleSheet.create({
 header: {
   flexDirection: 'row',
   alignItems: 'center',
-  paddingTop: Platform.OS === 'android' ? 30 : 40,
+  paddingTop: 60,
   paddingHorizontal: 25,
   paddingBottom: 20,
 },

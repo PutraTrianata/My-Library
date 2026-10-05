@@ -40,7 +40,8 @@
             "backgroundColor": "#FFFFFF"
           }
         }
-      ]
+      ],
+      "expo-font"
     ],
     "extra": {
       "eas": {
